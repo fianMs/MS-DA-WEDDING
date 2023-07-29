@@ -1,13 +1,13 @@
 :root {
   --pink: #f14e95;
   --bg: #0a0a0a;
-  --shadow: 0 2px 2px rgb(0, 0, 0 / 0.5);
+  --shadow: 0 2px 2px rgb(0 0 0 / 0.5);
 }
 
 body {
   font-size: 1.2rem;
   font-family: "Work Sans", sans-serif;
-  /* min-height: 2000px; */
+  min-height: 4000px;
 }
 
 .hero::before {
@@ -19,7 +19,10 @@ body {
   width: 100%;
   height: 100%;
   background-image: url(img/beautiful-husband-wife-posing-beach-their-wedding.jpg);
+  background-size: cover;
+  background-position: center;
   z-index: -1;
+  filter: grayscale();
 }
 
 .hero {
@@ -28,24 +31,83 @@ body {
 }
 
 .hero h1 {
+  text-shadow: var(--shadow);
+}
+
+.hero h1 {
   font-family: "Sacramento";
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--pink);
 }
 
 .hero h4 {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  color: var(--bg);
 }
 
 .hero p {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  color: var(--bg);
 }
 
 .hero a {
   color: var(--pink);
   background-color: white;
+  box-shadow: var(--shadow);
 }
 
 .hero a:hover {
   background-color: var(--pink);
+  color: #fff;
+}
+
+.mynavbar {
+}
+
+.navbar-brand,
+.offcanvas-title {
+  font-family: "Sacramento";
+  font-size: 3rem;
+}
+
+.nav-link {
+  font-weight: 600;
+}
+
+/* Media Query */
+
+/* laptop */
+@media (max-width: 992px) {
+  html {
+    font-size: 75%;
+  }
+  .simply-countdown > .simply-section {
+    padding: 70px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 65%;
+  }
+  .simply-countdown > .simply-section {
+    padding: 60px;
+    margin: 5px;
+  }
+  .nav-link {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+/* mobile phone */
+@media (max-width: 576px) {
+  html {
+    font-size: 55%;
+  }
+  .simply-countdown > .simply-section {
+    padding: 45px;
+    margin: 3px;
+  }
 }
