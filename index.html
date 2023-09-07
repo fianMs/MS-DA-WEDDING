@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ms and Da wedding</title>
+    <title>MS & DA Wedding</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,6 +16,13 @@
       href="https://fonts.googleapis.com/css2?family=Sacramento&family=Work+Sans:wght@100;300;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="styles.css" />
 
     <!-- simply countDown -->
@@ -35,8 +42,9 @@
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
+        <h5>MS & DA</h5>
         <h4>Kepada bapak/ibu/saudara/i,</h4>
-        <h1>Pejalan Sunyi & Partner</h1>
+        <h1><span></span></h1>
         <p>Akan melangsungkan pernikahan dalam:</p>
         <div class="simply-countdown"></div>
         <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()"
@@ -215,7 +223,7 @@
                 </div>
               </div>
               <div class="card-footer">
-                Saat acara akad nikah diharapkan untuk kondusif menjada
+                Saat acara akad nikah diharapkan untuk kondusif menjaga
                 kekhidmatan dan kekhusyuan seluruh prosesi.
               </div>
             </div>
@@ -470,8 +478,9 @@
             <span>ungkapan tanda kasih</span>
             <h2>Kirim Hadiah</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-              voluptatum.
+              Doa restu Anda merupakan karunia terindah bagi kami. Dan jika
+              memberi adalah ungkapan tanda kasih, dengan senang hati kami
+              menerima kado secara cashless melalui :
             </p>
           </div>
         </div>
@@ -506,11 +515,11 @@
         <div class="row">
           <div class="col text-center">
             <small class="block"
-              >copy; 2023 MS&DA wedding. All Rights Reserved.</small
+              >copy; 2023 MS & DA wedding. All Rights Reserved.</small
             >
             <small class="block"
-              >Design by
-              <a href="https://www.instagram.com/muh_sufian">@muh-sufian</a
+              >Design by :
+              <a href="https://www.instagram.com/muh_sufian"> @muh-sufian </a
               >.</small
             >
 
@@ -535,6 +544,19 @@
         </div>
       </div>
     </footer>
+
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source
+          src="music/mixkit-ill-always-remember-806.mp3"
+          type="audio/mp3"
+        />
+      </audio>
+
+      <div class="audio-icon-wrapper" style="display: none">
+        <i class="bi bi-disc"></i>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
@@ -576,6 +598,10 @@
 
     <script>
       const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
+      const audioIcon = document.querySelector(".audio-icon-wrapper i");
+      const song = document.querySelector("#song");
+      let isPlaying = false;
 
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -591,12 +617,36 @@
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = "smooth";
-        localStorage.setItem("opened", "true");
+        // localStorage.setItem("opened", "true");
+        playAudio();
+        isPlaying = true;
       }
 
-      if (!localStorage.getItem("opened")) {
-        disableScroll();
+      function playAudio() {
+        song.volume = 0.3;
+        audioIconWrapper.style.display = "flex";
+        song.play();
       }
+
+      audioIconWrapper.onclick = function () {
+        if (isPlaying) {
+          song.pause();
+          audioIcon.classList.remove("bi-disc");
+          audioIcon.classList.add("bi-pause-circle");
+        } else {
+          song.play();
+          audioIcon.classList.add("bi-disc");
+          audioIcon.classList.remove("bi-pause-circle");
+        }
+
+        isPlaying = !isPlaying;
+      };
+
+      // if (!localStorage.getItem("opened")) {
+      //   disableScroll();
+      // }
+
+      disableScroll();
     </script>
 
     <script>
@@ -614,6 +664,14 @@
           });
         });
       });
+    </script>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get("n");
+
+      const namaContainer = document.querySelector(".hero h1 span");
+      namaContainer.innerText = nama;
     </script>
   </body>
 </html>
