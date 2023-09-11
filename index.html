@@ -42,9 +42,9 @@
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
-        <h5>MS & DA</h5>
-        <h4>Kepada bapak/ibu/saudara/i,</h4>
-        <h1><span></span></h1>
+        <!-- <h5>MS & DA</h5> -->
+        <h4>Kepada <span>Bapak/ibu/saudara/i </span></h4>
+        <h1>Sufian & Abline</h1>
         <p>Akan melangsungkan pernikahan dalam:</p>
         <div class="simply-countdown"></div>
         <a href="#home" class="btn btn-lg mt-4" onClick="enableScroll()"
@@ -171,6 +171,17 @@
             <p class="alamat">
               Alamat: Gedung Braja Mustika <br />Jl. Dr. Semeru, Komp Bogor golf
             </p>
+
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.526902553414!2d106.77380297594038!3d-6.581226664336729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c4513eee3a2d%3A0x85ff382a1dc9430f!2sHotel%20Braja%20Mustika!5e0!3m2!1sid!2sid!4v1694390779905!5m2!1sid!2sid"
+              width="100%"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+
             <a
               href="https://www.bing.com/maps?osid=d178ebc1-b0a8-4f3f-849f-b8f7020e6cdf&cp=-6.581655~106.771551&lvl=16&imgid=4559e1d5-e65b-494c-97a8-2f6f7f10d4a4&v=2&sV=2&form=S00027"
               target="_blank"
@@ -468,6 +479,37 @@
             <button class="btn btn-primary">Kirim</button>
           </div>
         </form>
+
+        <div class="row justify-content-center margin-top mt-5">
+          <div class="col-nd-6">
+            <div id="disqus_thread"></div>
+            <script>
+              /**
+               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+              /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+              (function () {
+                // DON'T EDIT BELOW THIS LINE
+                var d = document,
+                  s = d.createElement("script");
+                s.src = "https://ms-da-wedding.disqus.com/embed.js";
+                s.setAttribute("data-timestamp", +new Date());
+                (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript
+              >Please enable JavaScript to view the
+              <a href="https://disqus.com/?ref_noscript"
+                >comments powered by Disqus.</a
+              ></noscript
+            >
+          </div>
+        </div>
       </div>
     </section>
 
@@ -668,10 +710,12 @@
 
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const nama = urlParams.get("n");
+      const nama = urlParams.get("n") || "";
+      const pronoun = urlParams.get("p") || "Bapak/Ibu/Saudara/i";
+      const namaContainer = document.querySelector(".hero h4 span");
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ",");
 
-      const namaContainer = document.querySelector(".hero h1 span");
-      namaContainer.innerText = nama;
+      document.querySelector("#nama").value = nama;
     </script>
   </body>
 </html>
